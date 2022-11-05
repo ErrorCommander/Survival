@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "EndBlock",
+                    "type": "Button",
+                    "id": "50b933c6-c5a5-40de-9ad6-671cdfe18203",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "PickUp",
                     "type": "Button",
                     "id": "6c5dc851-aaee-4ce2-878b-6811640abe7a",
@@ -76,7 +85,7 @@
                     "name": "",
                     "id": "57257b55-c3a0-4094-b64a-9b64fc46c9b0",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Keyboard and mouse",
                     "action": "Block",
@@ -214,6 +223,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "50de7582-a7dd-4b00-8251-a1d98c2f0b89",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "EndBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
