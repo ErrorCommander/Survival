@@ -7,6 +7,7 @@ public class FollowCamera : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField] private Vector3 _offsetPosition;
     [SerializeField] private bool _usePositionAsOffset;
+    [SerializeField, Min(0)] private float _lerpRate = 10f;
 
     private void Awake()
     {
@@ -18,6 +19,6 @@ public class FollowCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = _target.position + _offsetPosition;
+        transform.position = Vector3.Lerp(transform.position, _target.position + _offsetPosition, _lerpRate * Time.deltaTime) ;
     }
 }
