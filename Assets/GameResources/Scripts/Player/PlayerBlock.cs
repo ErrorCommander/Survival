@@ -23,15 +23,15 @@ public class PlayerBlock : MonoBehaviour
 
     private void BlockStart()
     {
-        Debug.Log("Start Block");
         _player.SpeedFactor = 0.5f;
+        _player.DamageFactor = 0.5f;
         _animator.IsBlock = true;
     }
 
     private void BlockEnd()
     {
-        Debug.Log("End Block");
         _player.SpeedFactor = 1f;
+        _player.DamageFactor = 1f;
         _animator.IsBlock = false;
     }
 }
