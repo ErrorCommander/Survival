@@ -1,4 +1,4 @@
-public interface IAttacker
+public interface IAnimAttacker
 {
     public void OnAttack();
 }
