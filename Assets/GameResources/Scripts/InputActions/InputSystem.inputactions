@@ -60,9 +60,45 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChangeWeapon",
+                    "name": "SwitchWeaponTo1",
                     "type": "Button",
                     "id": "e7009f83-63f8-44cb-8089-ca6e01605d45",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchWeaponTo2",
+                    "type": "Button",
+                    "id": "a9c9fcfd-3770-42ba-b02d-9bebd51723a8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchWeaponTo3",
+                    "type": "Button",
+                    "id": "a00e5e41-0c9d-4eb9-b967-43e24498e5cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchWeaponTo4",
+                    "type": "Button",
+                    "id": "9d583118-ffe7-47e1-9563-594daaf37d89",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchWeaponTo5",
+                    "type": "Button",
+                    "id": "6a55b0ee-6d61-471c-a7a1-36e111a84317",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -232,6 +268,116 @@
                     "processors": "",
                     "groups": "Keyboard and mouse",
                     "action": "EndBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b666dc4f-55c3-4ce8-87bd-1486f978ac1b",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "SwitchWeaponTo1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08372fa4-50a9-404c-b800-293a862f93b6",
+                    "path": "<Keyboard>/numpad1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeaponTo1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19f5e3d7-7dbf-4549-b3cf-2eb3f589fc07",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "SwitchWeaponTo2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba56e30c-eb13-40b2-896f-35916bf6ce28",
+                    "path": "<Keyboard>/numpad2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeaponTo2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a9f7afc-4ffc-44c4-9b3d-c09a53f1290d",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "SwitchWeaponTo3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a68eb10-75a6-43aa-810a-d6a0422ef04d",
+                    "path": "<Keyboard>/numpad3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeaponTo3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3727861a-6977-4268-a8f7-62fe6684fa98",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "SwitchWeaponTo4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15d47aa0-d0ea-499e-93f5-5cf84179c798",
+                    "path": "<Keyboard>/numpad4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeaponTo4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c49dbd7-8e4d-4279-80a8-7903a5b555b9",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "SwitchWeaponTo5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db265056-73af-467f-8261-9a91c5fa0d22",
+                    "path": "<Keyboard>/numpad5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeaponTo5",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

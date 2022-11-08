@@ -1,57 +1,90 @@
-using ExtensionsTools;
+using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Player), (typeof(PlayerAnimator)))]
-public class PlayerAttack : MonoBehaviour, IAttacker
+[RequireComponent(typeof(Player), typeof(PlayerAnimator))]
+public class PlayerAttack : MonoBehaviour, IAnimAttacker
 {
-    private const float FORWARD_OFFSET = 0.9f;
-    private const float UP_OFFSET = 1.3f;
-    private const float RADIUS_CECK = 0.2f;
-    
-    [SerializeField] private LayerMask _layerAttack;
-    
+    [SerializeField] private Transform _attachPoint;
+
     private readonly int _animatorAttack = Animator.StringToHash("Attack");
+    private readonly int _animatorShot = Animator.StringToHash("BowShot");
+
+    private BaseWeapon _weapon;
     private PlayerAnimator _animator;
-    
     private Player _player;
     private InputSystem _input;
+    private bool _isCanAttack = true;
 
-    private void Start()
+    public void SetWeapon(BaseWeapon weapon)
     {
-        _animator = GetComponent<PlayerAnimator>();
-        _player = GetComponent<Player>();
-        _input = _player.Input;
-        _input.Player.Attack.performed += context => TryAttack();
-    }
-
-    private void TryAttack()
-    {
-        Debug.Log("Try Attack");
-        if (!_animator.IsBlock)
+        if (_isCanAttack)
         {
-            _animator.PlayAnimation(_animatorAttack);
+            if(_weapon != null)
+                _weapon.gameObject.SetActive(false);
+            
+            _weapon = weapon;
+            _weapon.gameObject.SetActive(true);
+            AttachWeapon(_weapon);
+            _animator.SetWeapon(_weapon.WeaponType);
+        }
+        else
+        {
+            StartCoroutine(DelaySwitchWeapon(weapon));
         }
     }
 
     public void OnAttack()
     {
-        Debug.Log("End Attack");
+            _weapon.Attack(transform);
+        _player.SpeedFactor = 1f;
+    }
 
-        Vector3 hitPoint = transform.position;
-        hitPoint += transform.rotation * (Vector3.forward * FORWARD_OFFSET);
-        hitPoint += transform.rotation * (Vector3.up * UP_OFFSET);
-        float radius = RADIUS_CECK;
-        Collider[] hits = new Collider[1];
+    private void Awake() => _animator = GetComponent<PlayerAnimator>();
 
-        if (Physics.OverlapSphereNonAlloc(hitPoint, radius, hits, _layerAttack) != 0)
+    private void Start()
+    {
+        _player = GetComponent<Player>();
+        _input = _player.Input;
+        _input.Player.Attack.performed += context => TryAttack();
+    }
+
+    private void AttachWeapon(BaseWeapon weapon)
+    {
+        if (weapon is IAttachable attachable)
+            attachable.AttachTo(_attachPoint);
+    }
+
+    private IEnumerator DelaySwitchWeapon(BaseWeapon weapon)
+    {
+        yield return new WaitUntil(() => _isCanAttack);
+        SetWeapon(weapon);
+    }
+
+    private void TryAttack()
+    {
+        if (!_animator.IsBlock && _isCanAttack)
         {
-            Debug.Log(hits[0].name);
+            if (_weapon.WeaponType == WeaponType.Bow)
+            {
+                _player.SpeedFactor = 0.5f;
+                _animator.PlayAnimation(_animatorShot);
+            }
+            else
+            {
+                _animator.PlayAnimation(_animatorAttack);
+            }
+            
+            DelayAttack(_weapon.Delay);
         }
-        else
-        {
-            Debug.Log("did not hit");
-        }
+    }
 
-        DebugTools.DrawSpark(hitPoint, radius, 5f);
+    private void DelayAttack(float delay) 
+        => StartCoroutine(BlockedAttack(delay));
+
+    private IEnumerator BlockedAttack(float delay)
+    {
+        _isCanAttack = false;
+        yield return new WaitForSeconds(delay);
+        _isCanAttack = true;
     }
 }
